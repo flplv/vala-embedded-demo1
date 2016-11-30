@@ -6,10 +6,10 @@ namespace LedDancingDemo
         /* Led dancing example */
         Led led;
         LedState[] states;
-        
+
         int position = 0;
         bool dancing = true;
-        TimeoutSource time = new TimeoutSource (500);
+        TimeoutSource time;
 
         void dance_once ()
         {
@@ -18,10 +18,11 @@ namespace LedDancingDemo
             position %= states.length;
         }
 
-        public Dancer (MainLoop loop, Led led, LedState[] states)
+        public Dancer (MainLoop loop, Led led, LedState[] states, int period_milliseconds = 500)
         {
             this.led = led;
             this.states = states;
+            this.time = new TimeoutSource (period_milliseconds);
 
             time.set_callback (() => {
                 dance_once ();
