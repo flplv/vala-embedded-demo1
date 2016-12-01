@@ -4,13 +4,18 @@ This is a Vala demo project that access /sys/class/gpioXX to set and reset Leds.
 In the file Main.vala, line 24, you can configure the GPIOs used.
 
 ## Dependencies ##
-sudo apt-get install valac
+To build and run:
+    sudo apt-get install valac
 
+To run only, without building on embedded Linux:
+    sudo apt-get install libglib2.0-0
 
 ## Build ##
 cd LedDancingDemo
-valac --pkg glib-2.0 --pkg gio-2.0 Dancer.vala ILed.vala LedState.vala Led.vala IGpio.vala SysfsGpio.vala Main.vala -o DancingDemo
+make
 
+## Cross Build ##
+Read the Makefile to see how gcc is used and adapt it to your toolchain.
 
 ## Run ##
-./DancingDemo
+./LedDancingDemo
