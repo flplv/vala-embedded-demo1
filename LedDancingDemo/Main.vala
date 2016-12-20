@@ -1,5 +1,3 @@
-using GLib;
-
 namespace LedDancingDemo
 {
     int main (string[] args)
@@ -22,10 +20,8 @@ namespace LedDancingDemo
         };
 
         var led = new Led(10, 11, 12, new SysfsGpio());
-
-        var dancer = new Dancer (loop, led, states);
+        new Dancer (loop, led, states);
         loop.run();
-        dancer = null; /* To avoid warning of unused variable */
         return 0;
     }
 }
